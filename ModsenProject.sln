@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModsenProject.Common", "ModsenProject.Common\ModsenProject.Common.csproj", "{87F6CFE0-7C73-4C6D-9A2B-E4E5730CBB26}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModsenProject.IdentityServer", "ModsenProject.IdentityServer\ModsenProject.IdentityServer.csproj", "{78A41482-4214-47B2-B396-8D550CF44890}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87F6CFE0-7C73-4C6D-9A2B-E4E5730CBB26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87F6CFE0-7C73-4C6D-9A2B-E4E5730CBB26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87F6CFE0-7C73-4C6D-9A2B-E4E5730CBB26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87F6CFE0-7C73-4C6D-9A2B-E4E5730CBB26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78A41482-4214-47B2-B396-8D550CF44890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A41482-4214-47B2-B396-8D550CF44890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A41482-4214-47B2-B396-8D550CF44890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A41482-4214-47B2-B396-8D550CF44890}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0563434-5475-4EA2-BAE0-733C2C662E46}
+	EndGlobalSection
+EndGlobal
