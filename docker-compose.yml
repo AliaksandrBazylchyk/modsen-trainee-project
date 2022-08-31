@@ -67,6 +67,18 @@ services:
     networks:
         - rabbitmq_network
 
+  modsenproject.producerapi:
+    image: ${DOCKER_REGISTRY-}modsenprojectproducerapi
+    build:
+      context: .
+      dockerfile: ModsenProject.ProducerApi/Dockerfile
+
+  modsenproject.consumerapi:
+    image: ${DOCKER_REGISTRY-}modsenprojectconsumerapi
+    build:
+      context: .
+      dockerfile: ModsenProject.ConsumerApi/Dockerfile
+
 networks:
   rabbitmq_network:
     driver: bridge
@@ -80,3 +92,5 @@ volumes:
     external: true
   rabbitmqlogs:
     external: true
+
+
