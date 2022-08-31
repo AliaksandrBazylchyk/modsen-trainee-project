@@ -23,10 +23,13 @@ namespace ModsenProject.IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var identityServerDatabaseConnectionString = Configuration.GetSection("IDENTITY_SERVER_DATABASE_CONNECTION_STRING").Value;
+            var aspNetIdentityDatabaseConnectionString = Configuration.GetSection("ASP_NET_IDENTITY_POSTGRES_CONNECTION_STRING").Value;
+
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(aspNetIdentityDatabaseConnectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
