@@ -2,7 +2,11 @@ version: '3.4'
 
 services:
   modsenproject.identityserver:
+    container_name: indetity_server
     image: ${DOCKER_REGISTRY-}modsenprojectidentityserver
+    environment:
+      ASP_NET_IDENTITY_POSTGRES_CONNECTION_STRING: "Host=localhost;Port=5433;Database=aspnetidentity;Username=postgres;Password=root"
+      IDENTITY_SERVER_DATABASE_CONNECTION_STRINGL: "Host=localhost;Port=5433;Database=aspnetidentity;Username=postgres;Password=root"
     build:
       context: .
       dockerfile: ModsenProject.IdentityServer/Dockerfile
