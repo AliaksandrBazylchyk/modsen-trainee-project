@@ -5,11 +5,26 @@ services:
     container_name: indetity_server
     image: ${DOCKER_REGISTRY-}modsenprojectidentityserver
     environment:
-      ASP_NET_IDENTITY_POSTGRES_CONNECTION_STRING: "Host=localhost;Port=5433;Database=aspnetidentity;Username=postgres;Password=root"
-      IDENTITY_SERVER_DATABASE_CONNECTION_STRINGL: "Host=localhost;Port=5433;Database=aspnetidentity;Username=postgres;Password=root"
+      ASP_NET_IDENTITY_POSTGRES_CONNECTION_STRING: "Host=pg_admin;Port=5432;Database=aspNetIdentity;Username=root;Password=root"
+      IDENTITY_SERVER_DATABASE_CONNECTION_STRINGL: "Host=pg_admin;Port=5432;Database=identityConfiguration;Username=root;Password=root"
     build:
       context: .
       dockerfile: ModsenProject.IdentityServer/Dockerfile
+
+
+  modsenproject.producerapi:
+    container_name: producer_api
+    image: ${DOCKER_REGISTRY-}modsenprojectproducerapi
+    build:
+      context: .
+      dockerfile: ModsenProject.ProducerApi/Dockerfile
+
+  modsenproject.consumerapi:
+    container_name: consumer_api
+    image: ${DOCKER_REGISTRY-}modsenprojectconsumerapi
+    build:
+      context: .
+      dockerfile: ModsenProject.ConsumerApi/Dockerfile
 
   postgres.database:
     container_name: pg_database
@@ -53,6 +68,8 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: root
       ME_CONFIG_MONGODB_URL: mongodb://root:root@mongo:27017/
+    depends_on:
+      - mongo
 
 
   rabbitmq:
@@ -62,22 +79,11 @@ services:
         - 5672:5672
         - 15672:15672  
     volumes:
-        - rabbitmqdata:/var/lib/rabbitmq/
-        - rabbitmqlogs:/var/log/rabbitmq
+        - ./rabbitmqdata:/var/lib/rabbitmq/
+        - ./rabbitmqlogs:/var/log/rabbitmq
     networks:
         - rabbitmq_network
 
-  modsenproject.producerapi:
-    image: ${DOCKER_REGISTRY-}modsenprojectproducerapi
-    build:
-      context: .
-      dockerfile: ModsenProject.ProducerApi/Dockerfile
-
-  modsenproject.consumerapi:
-    image: ${DOCKER_REGISTRY-}modsenprojectconsumerapi
-    build:
-      context: .
-      dockerfile: ModsenProject.ConsumerApi/Dockerfile
 
 networks:
   rabbitmq_network:
@@ -85,12 +91,16 @@ networks:
 
 volumes:
   mongodbdata:
+    name: mongo-database-volume
     external: true
   pgdata:
+    name: postgres-database-volume
     external: true
   rabbitmqdata:
+    name: rabbitmq-data-volue
     external: true
   rabbitmqlogs:
+    name: rabbitmq-logs-volume
     external: true
 
 

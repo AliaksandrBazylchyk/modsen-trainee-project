@@ -535,3 +535,5 @@ FodyWeavers.xsd
 mongodbdata/
 
 pgdata/
+
+rabbitmqdata/
