@@ -15,6 +15,9 @@ services:
   modsenproject.producerapi:
     container_name: producer_api
     image: ${DOCKER_REGISTRY-}modsenprojectproducerapi
+    ports:
+      - "7000:443"
+      - "7001:80"
     build:
       context: .
       dockerfile: ModsenProject.ProducerApi/Dockerfile
@@ -22,6 +25,9 @@ services:
   modsenproject.consumerapi:
     container_name: consumer_api
     image: ${DOCKER_REGISTRY-}modsenprojectconsumerapi
+    ports:
+      - "7002:443"
+      - "7003:80"
     build:
       context: .
       dockerfile: ModsenProject.ConsumerApi/Dockerfile
